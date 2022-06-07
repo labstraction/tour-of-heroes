@@ -9,31 +9,31 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppComponent implements OnInit {
 
-  title: string = 'Lista Studenti Migliori';
+  title: string = 'Tour of heroes';
   // students: string[] = ['pippo', 'pluto', 'paperina', 'minnie', 'paperone', 'topolino', 'gastone'];
 
-  students2: any[] = [
-    {
-      name: 'pippo',
-      grade: 10
-    },
-    {
-      name: 'pluto',
-      grade: 6
-    },
-    {
-      name: 'paperina',
-      grade: 7
-    },
-    {
-      name: 'paperone',
-      grade: 3
-    },
-    {
-      name: 'minnie',
-      grade: 4
-    }
-  ]
+  // students2: any[] = [
+  //   {
+  //     name: 'pippo',
+  //     grade: 10
+  //   },
+  //   {
+  //     name: 'pluto',
+  //     grade: 6
+  //   },
+  //   {
+  //     name: 'paperina',
+  //     grade: 7
+  //   },
+  //   {
+  //     name: 'paperone',
+  //     grade: 3
+  //   },
+  //   {
+  //     name: 'minnie',
+  //     grade: 4
+  //   }
+  // ]
 
   constructor() {
   }
