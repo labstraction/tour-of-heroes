@@ -10,6 +10,9 @@ import { MessageService } from '../message/message.service';
   providedIn: 'root'
 })
 export class HeroService {
+  searchHeroes(term: string): any {
+    throw new Error('Method not implemented.');
+  }
 
   private heroesUrl = 'https://628b2f12667aea3a3e290de6.mockapi.io/heroes'
 
@@ -75,6 +78,29 @@ export class HeroService {
       tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
       catchError(this.handleError<Hero>('addHero'))
     );
+  }
+
+  deleteHero(id: string): Observable<Hero>{
+    const heroUrl = this.heroesUrl + '/' + id;
+    return this.http.delete<Hero>(heroUrl, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Hero>('deleteHero'))
+    );
+  }
+
+  searchHeroByName(term: string): Observable<Hero[]>{
+    const searchString = term.trim();
+    if (searchString) {
+      const searchUrl = this.heroesUrl + '/?name=' +searchString;
+      return this.http.get<Hero[]>(searchUrl).pipe(
+        tap( heroArray => heroArray.length !== 0 ?
+          this.log(`found heroes matching "${term}"`) :
+          this.log(`no heroes matching "${term}"`)),
+        catchError(this.handleError<Hero[]>('searchHeroes', []))
+      );
+    } else {
+      return of([]);
+    }
   }
 
 
